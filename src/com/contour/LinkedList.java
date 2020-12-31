@@ -13,14 +13,25 @@ public class LinkedList {
         } else {
             Node temp = head;
             while(true) {
-                if (temp.getNext() != null) { temp = temp.getNext(); } else { temp.setNext(newNode); }
+                if (temp.getNext() != null) { temp = temp.getNext(); }
+                else {
+                    temp.setNext(newNode);
+                    break;
+                }
             }
         }
     }
 
     // returns the length of linked list
-    public void length() {
-
+    public int length() {
+        int count = 0;
+        Node temp = head;
+        while (true) {
+            if (temp != null) {
+                count++;
+                temp.setNext(temp.getNext());
+            } else { return count; }
+        }
     }
 
     //Traversing Linked list
