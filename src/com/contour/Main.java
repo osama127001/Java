@@ -21,5 +21,25 @@ public class Main {
         int [][] arr = new int [2][2];
         arr[0][0] = 4;
         System.out.println(Arrays.deepToString(arr));
+
+        // Implicit Casting, Automatic casting, no data loss
+        // byte > short > int > long > float > double
+        short x = 1;
+        int y = x + 2;
+        System.out.println(y);
+
+        // Explicit casting, data loss
+        float f = 56.4f;
+        int g = (int)f + 4;
+        System.out.println(g);
+
+        // Explicit casting for strings
+        String num = "123";
+        int numToInt = Integer.parseInt(num);
+        System.out.println(numToInt);
+        String numToString = String.valueOf(numToInt);
+        System.out.println(numToString);
+
+
     }
 }
