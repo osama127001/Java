@@ -1,6 +1,7 @@
 package com.contour;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -39,6 +40,23 @@ public class Main {
         System.out.println(numToInt);
         String numToString = String.valueOf(numToInt);
         System.out.println(numToString);
+
+        // Reading input using scanner class
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter Number: ");
+        int number = scanner.nextInt(); // this line reads the input based on the data type.
+        System.out.println("Number is: " + number);
+
+        // For reading strings
+        System.out.print("Name: ");
+        String name = scanner.next();
+        System.out.println(name);
+
+        // For reading complete lines
+        System.out.print("Full Name: ");
+        String fullName = scanner.nextLine().trim(); //.trim() removes blank spaces before and after strings
+        System.out.println(fullName);
+
 
 
     }
