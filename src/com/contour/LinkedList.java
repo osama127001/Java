@@ -29,7 +29,7 @@ public class LinkedList {
         while (true) {
             if (temp != null) {
                 count++;
-                temp.setNext(temp.getNext());
+                temp = temp.getNext();
             } else { return count; }
         }
     }
@@ -39,8 +39,12 @@ public class LinkedList {
         Node temp = head;
         while (true) {
             System.out.print(temp.getData());
-            if (temp.getNext() == null) { break; }
-            temp.setNext(temp.getNext());
+            temp = temp.getNext();
+            if (temp == null) {
+                break;
+            } else {
+                System.out.print(" -> ");
+            }
         }
     }
 }

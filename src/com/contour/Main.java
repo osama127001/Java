@@ -8,6 +8,15 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
+        // Testing Linked list
+        LinkedList list = new LinkedList();
+        list.insert(5);
+        list.insert(7);
+        System.out.print("\nLinkedList: ");
+        list.traverse();
+        System.out.println("\nLength: " + list.length());
+        System.out.println("");
+
         // Difference between == and .equals()
         String s1 = new String("osama");
         String s2 = new String("osama");
@@ -56,10 +65,6 @@ public class Main {
         System.out.print("Full Name: ");
         String fullName = scanner.nextLine().trim(); //.trim() removes blank spaces before and after strings
         System.out.println(fullName);
-
-        // Testing Linked list
-
-
 
     }
 }
