@@ -11,7 +11,10 @@ public class Main {
         // Testing Linked list
         LinkedList list = new LinkedList();
         list.insert(5);
-        list.insert(7);
+        list.insert(4);
+        list.insert(3);
+        list.insert(2);
+        list.insert(1);
         System.out.print("\nLinkedList: ");
         list.traverse();
         System.out.println("\nLength: " + list.length());
