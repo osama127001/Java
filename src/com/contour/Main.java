@@ -18,7 +18,7 @@ public class Main {
         System.out.print("\nLinkedList: ");
         list.traverse();
         System.out.println("\nLength: " + list.length());
-        System.out.println("");
+        System.out.println("Search element index: " + list.search(5));
 
     }
 }

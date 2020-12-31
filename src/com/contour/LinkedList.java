@@ -47,4 +47,22 @@ public class LinkedList {
             }
         }
     }
+
+    // Search Function
+    public int search(int data) {
+        Node temp = head;
+        int count = 1;
+        while(true) {
+            if (temp == null) {
+                System.out.println("not found!");
+                return -1;
+            }
+            if (temp.getData() == data) {
+                return count;
+            } else {
+                temp = temp.getNext();
+                count++;
+            }
+        }
+    }
 }
