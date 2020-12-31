@@ -57,6 +57,8 @@ public class Main {
         String fullName = scanner.nextLine().trim(); //.trim() removes blank spaces before and after strings
         System.out.println(fullName);
 
+        // Testing Linked list
+
 
 
     }
