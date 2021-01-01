@@ -3,7 +3,7 @@ package com.contour;
 // Linear data structures parent class.
 public abstract class DataStructure implements IDataStructure {
 
-    private Node head;
+    protected Node head;
 
     //Constructor
     public DataStructure() {
