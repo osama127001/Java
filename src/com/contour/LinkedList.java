@@ -65,4 +65,25 @@ public class LinkedList implements ILinkedList {
             }
         }
     }
+
+    // delete node of linked list using index
+    public void delete(int index) {
+        Node temp = head;
+        if (index > this.length() || index < 1) {
+            System.out.println("index out of bound!");
+        } else if (index == 1) {
+            head = head.getNext();
+        } else {
+            int count = 1;
+            while(count < index - 1) {
+                temp = temp.getNext();
+                count++;
+            }
+            if (index == this.length()) {
+                temp.setNext(null);
+            } else {
+                temp.setNext(temp.getNext().getNext());
+            }
+        }
+    }
 }

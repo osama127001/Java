@@ -19,6 +19,8 @@ public class Main {
         list.traverse();
         System.out.println("\nLength: " + list.length());
         System.out.println("Search element index: " + list.search(5));
+        list.delete(4);
+        list.traverse();
 
     }
 }

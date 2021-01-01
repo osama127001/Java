@@ -5,4 +5,5 @@ public interface ILinkedList {
     public void traverse();
     public int search(int data);
     public int length();
+    public void delete(int index);
 }
