@@ -1,6 +1,6 @@
 package com.contour;
 
-public class LinkedList {
+public class LinkedList implements ILinkedList {
     Node head;
 
     // Adding data at end
