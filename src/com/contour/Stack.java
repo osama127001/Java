@@ -3,8 +3,20 @@ package com.contour;
 public class Stack extends DataStructure implements IDataStructure{
 
     // insert at end in stack
-    public void insert() {
-
+    @Override
+    public void insert(int data) {
+        Node newNode = new Node();
+        newNode.setData(data);
+        newNode.setNext(null);
+        if(super.head == null) {
+            head = newNode;
+        } else {
+            Node temp = super.head;
+            while(temp.getNext() != null) {
+                temp = temp.getNext();
+            }
+            temp.setNext(newNode);
+        }
     }
 
     // returns the length of the stack
