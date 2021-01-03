@@ -26,11 +26,25 @@ public class Stack extends DataStructure implements IDataStructure{
 
     // deletes an element at the end in stack
     public void delete() {
-
+        if (super.head == null) {
+            System.out.println("Nothing in stack");
+        } else if (this.length() == 1) {
+            super.head = null;
+        } else {
+            Node temp = super.head;
+            while(temp.getNext().getNext() != null) {
+                temp = temp.getNext();
+            }
+            temp.setNext(null);
+        }
     }
 
     // traversing the stack
-    public void travers() {
+    public void traverse() {
+        if (super.head == null) {
+            System.out.println("Stack is empty!");
+            return;
+        }
         super.traverse();
     }
 

@@ -34,6 +34,17 @@ public class Main {
         stack.traverse();
         System.out.println("\nLength: " + stack.length());
         System.out.println("Search element index: " + stack.search(66));
+        stack.delete();
+        stack.traverse();
+        System.out.println("");
+        stack.delete();
+        stack.traverse();
+        System.out.println("");
+        stack.delete();
+        stack.traverse();
+        System.out.println("");
+        stack.delete();
+        stack.traverse();
 
     }
 }

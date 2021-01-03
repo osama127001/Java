@@ -14,6 +14,10 @@ public class LinkedList extends DataStructure implements IDataStructure {
 
     //Traversing Linked list
     public void traverse() {
+        if (super.head == null) {
+            System.out.println("Stack is empty!");
+            return;
+        }
         super.traverse();
     }
 
