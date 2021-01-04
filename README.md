@@ -1,5 +1,7 @@
 # Java-Training
 
+!()[images/OrganizationStructure.png]
+
 ## Some Concepts
 
 Difference between == and .equals()
