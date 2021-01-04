@@ -1,7 +1,7 @@
 package com.contour;
 
-import java.util.Arrays;
-import java.util.Scanner;
+import com.contour.datastructures.LinkedList;
+import com.contour.datastructures.Stack;
 
 public class Main {
 

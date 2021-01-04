@@ -1,4 +1,4 @@
-package com.contour;
+package com.contour.datastructures;
 
 public class Stack extends DataStructure implements IDataStructure{
 

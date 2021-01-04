@@ -1,4 +1,4 @@
-package com.contour;
+package com.contour.datastructures;
 
 // Linear data structures parent class.
 public abstract class DataStructure implements IDataStructure {

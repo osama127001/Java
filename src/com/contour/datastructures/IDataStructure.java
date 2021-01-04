@@ -1,4 +1,4 @@
-package com.contour;
+package com.contour.datastructures;
 
 public interface IDataStructure {
     public void insert(int data);
