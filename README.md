@@ -1,6 +1,7 @@
 # Java-Training
 
-!()[images/OrganizationStructure.png]
+### Organization Structure 
+![](images/OrganizationStructure.png)
 
 ## Some Concepts
 
