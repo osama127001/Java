@@ -1,5 +1,13 @@
 package com.contour.interfaces;
 
-public class Person {
+public abstract class Person implements IExercise, IWork {
 
+    @Override
+    public void walk() {}
+
+    @Override
+    public void run(){}
+
+    @Override
+    public void attendMeeting() {}
 }

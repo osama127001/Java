@@ -1,6 +1,7 @@
 # Java Basic Documentation
 
 ### Composition Code Example
+
     class Floors {
       int rooms; // just for understanding
     }
@@ -51,6 +52,7 @@
       
       }
       
+      // You have to mark this class abstract or define abstractMethod().
       abstract class B extends A {
       
           // This class does not define abstractMethod() from class A.
@@ -71,6 +73,41 @@
               System.out.println("Abstract Method!");
           }
       }
+
+### Interfaces
+
+* Functions declared in an interface should be defined in the class.
+* If a class implements more than 1 interfaces, than all the functions from both the interfaces should be defined.
+* It is a good practise to declare all the abstract methods in interfaces. Declaring normal methods in interface is not a good practise.
+
+      public interface IWork {
+          public abstract void code();
+          public void attendMeeting();
+      }
+
+      public interface IExercise {
+          public void walk();
+          public void run();
+      }
+
+      public abstract class Person implements IExercise, IWork {
+          @Override
+          public void walk() {}
+      
+          @Override
+          public void run() {}
+      
+          @Override
+          public void attendMeeting() {}
+      }
+
+      public class Employee extends Person {   
+          @Override
+          public void code() {
+              System.out.println("Code!");
+          }
+      }
+
 
 
 ## Some Concepts

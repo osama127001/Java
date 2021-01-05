@@ -2,11 +2,19 @@ package com.contour;
 
 import com.contour.datastructures.LinkedList;
 import com.contour.datastructures.Stack;
+import com.contour.interfaces.Employee;
+import com.contour.interfaces.Person;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+
+        // Testing interfaces
+        Employee e = new Employee();
+        e.sameFunction();
+        e.run();
+        e.code();
 
         // Testing Linked list
         System.out.println("\n********** Linkedlist **********");
