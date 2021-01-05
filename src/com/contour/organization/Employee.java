@@ -12,6 +12,10 @@ public class Employee extends Person {
         this.department = department;
     }
 
+    public Employee() {
+        super.name = null;
+    }
+
     public int getSalary() {
         return salary;
     }

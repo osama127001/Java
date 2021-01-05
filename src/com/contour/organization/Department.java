@@ -1,8 +1,8 @@
 package com.contour.organization;
 
-public class Department {
+public abstract class Department {
 
-    public String name;
+    protected String name;
     protected Team[] teams;
     protected int deptId;
 

@@ -2,9 +2,28 @@ package com.contour.organization;
 
 public class DepartmentRepository extends Repository {
 
-    public void CreateDepartment() {}
-    public void GetDepartment() {}
-    public void UpdateDepartment() {}
-    public void DeleteDepartment() {}
+    @Override
+    public void Create() {
+        super.Create();
+        // Create dept
+    }
+
+    @Override
+    public void Get() {
+        super.Get();
+        // get dept
+    }
+
+    @Override
+    public void Update() {
+        super.Update();
+        // update dept
+    }
+
+    @Override
+    public void Delete() {
+        super.Delete();
+        // delete dept
+    }
 
 }
