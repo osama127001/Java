@@ -5,8 +5,8 @@ public class Building {
     // Composition
     protected final Floors[] floors;
 
-    public Building(Floors[] floors) {
-        this.floors = floors;
+    public Building() {
+        this.floors = new Floors[6];
     }
 
 

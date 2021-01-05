@@ -1,7 +1,77 @@
-# Java-Training
+# Java Basic Documentation
 
-### Organization Structure 
-![](images/OrganizationStructure.png)
+### Composition Code Example
+    class Floors {
+      int rooms; // just for understanding
+    }
+    
+    class Building {
+
+        // this should be final.
+        private final Floors[] floors;
+        
+        // Creating instance inside class. Cannot be passed through args.
+        public Building() {
+            this.floors = new Floors[5];
+        }
+    }
+
+### Aggregation Code Example
+
+    class Door {
+        int hp;
+    }
+    
+    class Car {
+        // Not final
+        private Door[] doors;
+    
+        // Passing doors from args for aggregation
+        public Car(Door[] doors) {
+            this.doors = doors;
+        }
+    }
+
+### Abstraction
+
+* For a class to be abstract, at least one method should be abstract. We can also mark a class abstract.
+* Classes that are abstract might not have a definition, but the definition is overriden by a child class.
+* A method is marked abstract because its definition is meant to be defined by its child class.
+* Abstract methods cannot have a body.
+
+      abstract class A {
+      
+          // Abstract method cannot have a body.
+          public abstract void abstractMethod();
+      
+          // Non Abstract method.
+          public void printName() {
+              System.out.println("Printing Class A!");
+          }
+      
+      }
+      
+      abstract class B extends A {
+      
+          // This class does not define abstractMethod() from class A.
+      
+          // Non Abstract method.
+          @Override
+          public void printName() {
+              System.out.println("Printing Class B!");
+          }
+      
+      }
+      
+      class C extends B {
+      
+          // For this to implement, we need to mark Class B as Abstract.
+          @Override
+          public void abstractMethod() {
+              System.out.println("Abstract Method!");
+          }
+      }
+
 
 ## Some Concepts
 
