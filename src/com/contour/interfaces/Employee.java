@@ -6,9 +6,5 @@ public class Employee extends Person {
     public void code() {
         System.out.println("Code!");
     }
-
-    @Override
-    public void sameFunction() {
-
-    }
+    
 }

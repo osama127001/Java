@@ -9,5 +9,8 @@ public abstract class Person implements IExercise, IWork {
     public void run(){}
 
     @Override
+    public abstract void code();
+
+    @Override
     public void attendMeeting() {}
 }
