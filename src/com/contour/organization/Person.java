@@ -1,7 +1,11 @@
 package com.contour.organization;
 
-public abstract class Person {
+public class Person {
 
     protected String name;
+
+    public String getName() {
+        return this.name;
+    }
 
 }

@@ -2,12 +2,30 @@ package com.contour;
 
 import com.contour.datastructures.LinkedList;
 import com.contour.datastructures.Stack;
-import com.contour.interfaces.Employee;
+import com.contour.organization.Employee;
+import com.contour.organization.Person;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
+
+        // Normal Instantiations
+        Person P = new Person();
+        Employee E = new Employee();
+
+        // Instantiations with parent classes/interfaces.
+        Object OP = new Person(); // Object is the parent of every class.
+        Person PE = new Employee();
+
+        // Accessing methods
+        P.getName(); // allowed
+        P.getSalary(); // getSalary() is a method in employee, not allowed (error)
+        O.getName(); // Not allowed.
+
+        // To make a parent object access the child's method, use typecasting
+        ((Person)O).getName(); // Now this will work.
+        ((Employee)P).getSalary(); // Now this will work.
 
     }
 }

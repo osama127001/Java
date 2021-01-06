@@ -1,8 +1,85 @@
+### Useful Intellij Shortcuts
+
+* `double tap shift`: Search anything in project. 
+* `ctrl + shift + enter`: Complete current statement.
+* `ctrl + /`: Comment line.
+* `ctrl + shift + /`: Comment block.
+* `ctrl B` or `hold ctrl + click`: goto declaration.
+* `alt + enter`: show intended actions for error fix.
+
+
+
 # Java Documentation
 
 ### Open Closed Principle
-### Generics
+Open closed principle states that, a class is `open for extention` and `Closed for modification`.
+The example below shows a convert class with a `convertToXML()` method. lets say we have to add a much better method called `convertTOJSON()`. So we can add another function in the same class which is against the open closed principle as we are modifying the class. The class could be an alrady tested class and we may add a bug by modifying it. so we can extend it and add another class that holds `convertToJSON()` function.
+
+    public class Convert {
+    
+        public void ConvertToXML() {
+            System.out.println("Converting data to XML");
+        }
+
+        // public void ConvertToJSON() {} // Against OPEN CLOSED PRINCIPLE
+    
+    }
+
+    public class ConvertToJson extends Convert {
+    
+        public void convertToJSON() {
+            System.out.println("Convert data to JSON");
+        }
+    
+    }
+
 ### Boxing / Unboxing
+
+Boxing and Unboxing is explained in the example below.
+
+    public class Person {
+    
+        protected String name;
+    
+        public String getName() {
+            return this.name;
+        }
+    
+    }
+
+    public class Employee extends Person {
+    
+        private int salary;
+
+        public int getSalary() {
+            return salary;
+        }
+    
+    }
+
+    public static void main(String[] args) {
+	// write your code here
+
+        // Normal Instantiations
+        Person P = new Person();
+        Employee E = new Employee();
+
+        // Instantiations with parent classes/interfaces.
+        Object OP = new Person(); // Object is the parent of every class.
+        Person PE = new Employee();
+
+        // Accessing methods
+        P.getName(); // allowed
+        P.getSalary(); // getSalary() is a method in employee, not allowed (error)
+        O.getName(); // Not allowed.
+
+        // To make a parent object access the child's method, use typecasting
+        ((Person)O).getName(); // Now this will work.
+        ((Employee)P).getSalary(); // Now this will work.
+        
+    }
+
+### Generics
 
 ### Composition Code Example
 
