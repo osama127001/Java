@@ -5,28 +5,68 @@ import com.contour.datastructures.Stack;
 import com.contour.organization.Employee;
 import com.contour.organization.Person;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
 
-        // Normal Instantiations
-        Person P = new Person();
-        Employee E = new Employee();
+        // Store only Integers
+        ArrayList<Integer> integerList = new ArrayList<Integer>();
+        integerList.add(1);
+        integerList.add(2);
+        integerList.add(3);
+        integerList.add(4);
+        integerList.add(5);
 
-        // Instantiations with parent classes/interfaces.
-        Object OP = new Person(); // Object is the parent of every class.
-        Person PE = new Employee();
+        // Store dynamic data
+        ArrayList list = new ArrayList(); // OR // ArrayList<Object> list = new ArrayList<Object>();
+        list.add("osama");
+        list.add(21);
+        list.add(12.90);
 
-        // Accessing methods
-        P.getName(); // allowed
-        P.getSalary(); // getSalary() is a method in employee, not allowed (error)
-        O.getName(); // Not allowed.
+        // Printing
+        System.out.println("Integer List: " + integerList);
+        System.out.println("Integer List: " + list);
 
-        // To make a parent object access the child's method, use typecasting
-        ((Person)O).getName(); // Now this will work.
-        ((Employee)P).getSalary(); // Now this will work.
+        // getting data from arraylist
+        int age = integerList.get(0);
+        Object data = list.get(0); // using object since we don't know the type.
+        System.out.println(age + " " + data);
 
+        // Updating values
+        list.set(0, "hadi");
+        System.out.println("New List: " + list);
+
+        // Contains function
+        System.out.println(list.contains(12.9));
+
+        // iteration
+        for (short i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+
+        // iteration using enhanced for loop
+        for (Object o : list) {
+            System.out.print(o + " ");
+        }
+
+        // printing using iterator
+        Iterator<Integer> it = integerList.iterator();
+        System.out.print(it.next() + " ");
+        System.out.print(it.next() + " ");
+        System.out.print(it.next() + " ");
+
+        // iterating through interator, removing element
+        while (it.hasNext()) {
+            int num = it.next();
+            if (num == 4) {
+                it.remove();
+            }
+        }
+        System.out.println(integerList);
     }
 }
 

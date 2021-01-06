@@ -4,7 +4,7 @@
 * `ctrl + shift + enter`: Complete current statement.
 * `ctrl + /`: Comment line.
 * `ctrl + shift + /`: Comment block.
-* `ctrl B` or `hold ctrl + click`: goto declaration.
+* `hold ctrl + click`: goto declaration/definition.
 * `alt + enter`: show intended actions for error fix.
 
 
@@ -78,6 +78,73 @@ Boxing and Unboxing is explained in the example below.
         ((Employee)P).getSalary(); // Now this will work.
         
     }
+
+### Collections
+
+`Java Collection Framework`: Collections are the containers that group multiple items in a single group. Store and manipulate data at realtime.
+
+`Collection Framework Hierarchy`: The images below shows the hierarchy:
+
+![](images/LinearCollection.PNG)
+![](images/Map.PNG)
+
+* #### ArrayList
+        // Store only Integers
+        ArrayList<Integer> integerList = new ArrayList<Integer>();
+        integerList.add(1);
+        integerList.add(2);
+        integerList.add(3);
+        integerList.add(4);
+        integerList.add(5);
+
+        // Store dynamic data
+        ArrayList list = new ArrayList(); // OR // ArrayList<Object> list = new ArrayList<Object>();
+        list.add("osama");
+        list.add(21);
+        list.add(12.90);
+
+        // Printing
+        System.out.println("Integer List: " + integerList);
+        System.out.println("Integer List: " + list);
+
+        // getting data from arraylist
+        int age = integerList.get(0);
+        Object data = list.get(0); // using object since we don't know the type.
+        System.out.println(age + " " + data);
+
+        // Updating values
+        list.set(0, "hadi");
+        System.out.println("New List: " + list);
+
+        // Contains function
+        System.out.println(list.contains(12.9));
+
+        // iteration
+        for (short i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " ");
+        }
+
+        // iteration using enhanced for loop
+        for (Object o : list) {
+            System.out.print(o + " ");
+        }
+
+        // printing using iterator
+        Iterator<Integer> it = integerList.iterator();
+        System.out.print(it.next() + " ");
+        System.out.print(it.next() + " ");
+        System.out.print(it.next() + " ");
+
+        // iterating through interator, removing element
+        while (it.hasNext()) {
+            int num = it.next();
+            if (num == 4) {
+                it.remove();
+            }
+        }
+        System.out.println(integerList);
+
+
 
 ### Generics
 
