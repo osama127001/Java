@@ -6,6 +6,7 @@ import com.contour.organization.Employee;
 import com.contour.organization.Person;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class Main {
@@ -13,60 +14,24 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        // Store only Integers
-        ArrayList<Integer> integerList = new ArrayList<Integer>();
-        integerList.add(1);
-        integerList.add(2);
-        integerList.add(3);
-        integerList.add(4);
-        integerList.add(5);
+        // Creating hashmap
+        // It contains other functions just like arraylist.
+        // Hashmaps do not have an order
+        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+        hm.put("osama", 123);
+        hm.put("hadi", 12);
+        hm.put("aamir", 1);
+        System.out.println(hm);
+        System.out.println(hm.get("hadi"));
+        hm.remove("aamir");
+        System.out.println(hm);
+        System.out.println(hm.containsKey("osama"));
+        System.out.println(hm.containsValue(123));
+        hm.replace("hadi", 3434);
+        System.out.println(hm);
+        System.out.println(hm.keySet());
 
-        // Store dynamic data
-        ArrayList list = new ArrayList(); // OR // ArrayList<Object> list = new ArrayList<Object>();
-        list.add("osama");
-        list.add(21);
-        list.add(12.90);
 
-        // Printing
-        System.out.println("Integer List: " + integerList);
-        System.out.println("Integer List: " + list);
-
-        // getting data from arraylist
-        int age = integerList.get(0);
-        Object data = list.get(0); // using object since we don't know the type.
-        System.out.println(age + " " + data);
-
-        // Updating values
-        list.set(0, "hadi");
-        System.out.println("New List: " + list);
-
-        // Contains function
-        System.out.println(list.contains(12.9));
-
-        // iteration
-        for (short i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i) + " ");
-        }
-
-        // iteration using enhanced for loop
-        for (Object o : list) {
-            System.out.print(o + " ");
-        }
-
-        // printing using iterator
-        Iterator<Integer> it = integerList.iterator();
-        System.out.print(it.next() + " ");
-        System.out.print(it.next() + " ");
-        System.out.print(it.next() + " ");
-
-        // iterating through interator, removing element
-        while (it.hasNext()) {
-            int num = it.next();
-            if (num == 4) {
-                it.remove();
-            }
-        }
-        System.out.println(integerList);
     }
 }
 
