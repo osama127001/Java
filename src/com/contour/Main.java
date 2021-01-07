@@ -1,11 +1,13 @@
 package com.contour;
 
+import com.contour.collections.Employee;
+import com.contour.collections.Repository;
 import com.contour.datastructures.LinkedList;
 import com.contour.datastructures.Stack;
-import com.contour.organization.Employee;
 import com.contour.organization.Person;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -14,25 +16,36 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
 
-        // Creating hashmap
-        // It contains other functions just like arraylist.
-        // Hashmaps do not have an order
-        HashMap<String, Integer> hm = new HashMap<String, Integer>();
-        hm.put("osama", 123);
-        hm.put("hadi", 12);
-        hm.put("aamir", 1);
-        System.out.println(hm);
-        System.out.println(hm.get("hadi"));
-        hm.remove("aamir");
-        System.out.println(hm);
-        System.out.println(hm.containsKey("osama"));
-        System.out.println(hm.containsValue(123));
-        hm.replace("hadi", 3434);
-        System.out.println(hm);
-        System.out.println(hm.keySet());
+        // Creating objects
+        Employee e1 = new Employee("Osama", "Khan");
+        e1.setPassword("123");
+        e1.setEmailId("osama.khan");
+        e1.setSalary(1000);
 
+        Employee e2 = new Employee("hadi", "Khan");
+        e2.setPassword("123");
+        e2.setEmailId("hadi.khan");
+        e2.setSalary(1000);
+
+        Employee e3 = new Employee("aamir", "Khan");
+        e3.setPassword("123");
+        e3.setEmailId("aamir.khan");
+        e3.setSalary(1000);
+
+        Repository<Employee> repo = new Repository<Employee>();
+        repo.create(e1);
+        repo.create(e2);
+        repo.create(e3);
+        // repo.delete(3);
+
+        // getting names of all employees
+        Collection<Employee> namesArr = repo.retrieve();
+        for (Employee e : namesArr) {
+            System.out.println(e.getFirstName() + " " + e.getLastName());
+        }
 
     }
+
 }
 
 

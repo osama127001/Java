@@ -89,6 +89,7 @@ Boxing and Unboxing is explained in the example below.
 ![](images/Map.PNG)
 
 * #### ArrayList
+  
       // Store only Integers
       ArrayList<Integer> integerList = new ArrayList<Integer>();
       integerList.add(1);
@@ -145,6 +146,7 @@ Boxing and Unboxing is explained in the example below.
       System.out.println(integerList);
 
 * #### HashMap
+  
       // Creating hashmap
       // It contains other functions just like arraylist.
       // Hashmaps do not have an order
