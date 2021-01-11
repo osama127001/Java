@@ -1,4 +1,4 @@
-package com.contour.collections;
+package com.contour.repositorytask.DL;
 
 public abstract class Person {
 

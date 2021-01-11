@@ -11,6 +11,22 @@
 
 # Java Documentation
 
+### Get Class Type
+
+    String x = "123";
+    
+    System.out.println(x.getClass()); // prints: class java.lang.String 
+    System.out.println(x.getClass().getSimpleName()); // prints: String 
+    System.out.println(x instanceof String); // prints: true
+
+### Strings
+
+    System.out.println("apple".compareTo("banana")); // prints: -1
+    System.out.println("apple".compareTo("apple")); // prints: 0
+    if ("apple" == "apple") {} // Compares addresses of strings
+    if ("apple".equals("apple")) {} // Compares values of strings
+
+
 ### Open Closed Principle
 Open closed principle states that, a class is `open for extention` and `Closed for modification`.
 The example below shows a convert class with a `convertToXML()` method. lets say we have to add a much better method called `convertTOJSON()`. So we can add another function in the same class which is against the open closed principle as we are modifying the class. The class could be an alrady tested class and we may add a bug by modifying it. so we can extend it and add another class that holds `convertToJSON()` function.

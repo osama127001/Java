@@ -1,17 +1,14 @@
 package com.contour;
 
-import com.contour.collections.Employee;
-import com.contour.collections.Repository;
-import com.contour.datastructures.LinkedList;
-import com.contour.datastructures.Stack;
-import com.contour.organization.Person;
+import com.contour.repositorytask.DAL.Repositories.EmployeeRepository;
+import com.contour.repositorytask.DL.Employee;
+import com.contour.repositorytask.DAL.Repositories.Repository;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
+
 
 public class Main {
+    static int count = 0;
 
     public static void main(String[] args) {
 	// write your code here
@@ -32,7 +29,8 @@ public class Main {
         e3.setEmailId("aamir.khan");
         e3.setSalary(1000);
 
-        Repository<Employee> repo = new Repository<Employee>();
+
+        EmployeeRepository repo = new EmployeeRepository();
         repo.create(e1);
         repo.create(e2);
         repo.create(e3);
@@ -44,9 +42,56 @@ public class Main {
             System.out.println(e.getFirstName() + " " + e.getLastName());
         }
 
+        // Searching Employee by name
+        Employee res = repo.find("Hadi");
+        System.out.println("Search result: " + res.getFirstName() + " " + res.getLastName());
+
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

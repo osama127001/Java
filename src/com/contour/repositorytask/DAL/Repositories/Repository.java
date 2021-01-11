@@ -1,9 +1,11 @@
-package com.contour.collections;
+package com.contour.repositorytask.DAL.Repositories;
+
+import com.contour.repositorytask.DAL.Interfaces.IRepository;
 
 import java.util.Collection;
 import java.util.HashMap;
 
-public class Repository<T> {
+public abstract class Repository<T> implements IRepository<T> {
 
     private int repoId;
     private HashMap<Integer, T> repo = new HashMap<Integer, T>();
