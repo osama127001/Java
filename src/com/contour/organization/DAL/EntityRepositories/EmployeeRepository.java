@@ -1,5 +1,6 @@
-package com.contour.repositorytask.DAL.Repositories;
+package com.contour.organization.DAL.EntityRepositories;
 
+import com.contour.organization.DAL.Repository;
 import com.contour.repositorytask.BL.Employee;
 
 import java.util.Collection;
@@ -17,4 +18,5 @@ public class EmployeeRepository extends Repository<Employee> {
         }
         return null;
     }
+
 }
