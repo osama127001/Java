@@ -11,6 +11,8 @@
 
 # Java Documentation
 
+<details>
+<summary>Get Class Type</summary>
 ### Get Class Type
 
     String x = "123";
@@ -18,6 +20,8 @@
     System.out.println(x.getClass()); // prints: class java.lang.String 
     System.out.println(x.getClass().getSimpleName()); // prints: String 
     System.out.println(x instanceof String); // prints: true
+
+</details>
 
 ### Strings
 
