@@ -1,4 +1,4 @@
-### Useful Intellij Shortcuts
+### IntelliJ Shortcuts
 
 * `double tap shift`: Search anything in project. 
 * `ctrl + shift + enter`: Complete current statement.
@@ -13,6 +13,7 @@
 
 <details>
 <summary>Get Class Type</summary>
+
 ### Get Class Type
 
     String x = "123";
@@ -23,6 +24,9 @@
 
 </details>
 
+<details>
+<summary>Strings</summary>
+
 ### Strings
 
     System.out.println("apple".compareTo("banana")); // prints: -1
@@ -30,6 +34,10 @@
     if ("apple" == "apple") {} // Compares addresses of strings
     if ("apple".equals("apple")) {} // Compares values of strings
 
+</details>
+
+<details>
+<summary>Open Closed Principle</summary>
 
 ### Open Closed Principle
 Open closed principle states that, a class is `open for extention` and `Closed for modification`.
@@ -52,6 +60,11 @@ The example below shows a convert class with a `convertToXML()` method. lets say
         }
     
     }
+
+</details>
+
+<details>
+<summary>Boxing / Unboxing</summary>
 
 ### Boxing / Unboxing
 
@@ -98,6 +111,11 @@ Boxing and Unboxing is explained in the example below.
         ((Employee)P).getSalary(); // Now this will work.
         
     }
+
+</details>
+
+<details>
+<summary>Collections</summary>
 
 ### Collections
 
@@ -184,7 +202,18 @@ Boxing and Unboxing is explained in the example below.
       System.out.println(hm);
       System.out.println(hm.keySet());
 
+
+</details>
+
+<details>
+<summary>Generics</summary>
+
 ### Generics
+
+</details>
+
+<details>
+<summary>Composition and Aggregation</summary>
 
 ### Composition Code Example
 
@@ -218,6 +247,12 @@ Boxing and Unboxing is explained in the example below.
             this.doors = doors;
         }
     }
+
+</details>
+
+
+<details>
+<summary>Abstraction</summary>
 
 ### Abstraction
 
@@ -260,6 +295,12 @@ Boxing and Unboxing is explained in the example below.
           }
       }
 
+</details>
+
+
+<details>
+<summary>Interfaces</summary>
+
 ### Interfaces
 
 * Functions declared in an interface should be defined in the class.
@@ -294,7 +335,11 @@ Boxing and Unboxing is explained in the example below.
           }
       }
 
+</details>
 
+
+<details>
+<summary>Some Concepts</summary>
 
 ## Some Concepts
 
@@ -355,6 +400,11 @@ For reading complete lines
     System.out.print("Full Name: ");
     String fullName = scanner.nextLine().trim(); //.trim() removes blank spaces before and after strings
     System.out.println(fullName);
+
+</details>
+
+<details>
+<summary>General Documentation</summary>
 
 ## Variables
 
@@ -580,3 +630,6 @@ For reading complete lines
   1. `&` AND 
   2. `|` OR
   3. `^` XOR
+
+
+</details>
