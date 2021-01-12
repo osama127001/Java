@@ -55,6 +55,211 @@
 
 ### 2. Setup Classes
 
+* Create a new XML file called `persistence.xml` inside the `main/resources` folder.
+* Add the following contents in the `persistence.xml` file:
+
+      <?xml version="1.0" encoding="UTF-8" ?>
+      
+      <persistence version="2.0"
+      xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+      
+          <!-- Define a name used to get an entity manager. Define that you will
+          complete transactions with the DB  -->
+          <persistence-unit name="JavaTraining" transaction-type="RESOURCE_LOCAL">
+      
+              <!-- Define the class for Hibernate which implements JPA -->
+              <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+              <!-- Define the object that should be persisted in the database -->
+              <class>com.contour.hibernate.Employee</class>
+              <properties>
+                  <!-- Driver for DB database -->
+                  <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+                  <!-- URL for DB -->
+                  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/testdb" />
+                  <!-- Username -->
+                  <property name="javax.persistence.jdbc.user" value="dbadmin" />
+                  <!-- Password -->
+                  <property name="javax.persistence.jdbc.password" value="admin" />
+              </properties>
+          </persistence-unit>
+      </persistence>
+
+  Note that the contents in the persistence.xml file contains information about the user, database, classes etc
+  
+
+* Now add a class, which will be served as an entity in relation with the database.
+* An example repository class with main function is shown below:
+
+      import javax.persistence.*;
+      import java.io.Serializable;
+      
+      @Entity(name = "employee")
+      @Table(name = "employee")
+      public class Employee implements Serializable {
+      
+          // Properties
+      
+          @Id
+          @Column(name = "employeeId", unique = true)
+          private int employeeId;
+      
+          @Column(name = "firstName", nullable = false)
+          private String firstName;
+      
+          @Column(name = "lastName", nullable = false)
+          private String lastName;
+      
+      
+          // Getters and Setters
+          public int getEmployeeId() { return employeeId; }
+          public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
+          public String getFirstName() { return firstName; }
+          public void setFirstName(String firstName) { this.firstName = firstName; }
+          public String getLastName() { return lastName; }
+          public void setLastName(String lastName) { this.lastName = lastName; }
+      
+      }
+
+* Now add a repository class to perform CRUD operations on the entity:
+
+      import javax.persistence.*;
+      import java.util.*;
+    
+      public class Main {
+      
+          // Creating Entity Manager
+          private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
+                  .createEntityManagerFactory("JavaTraining");
+      
+          // CRUD Operations
+          public static void addEmployee(int id, String firstName, String lastName) {
+              EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+              EntityTransaction et = null;
+              try {
+                  et = em.getTransaction();
+                  et.begin();
+                  Employee emp = new Employee();
+                  emp.setEmployeeId(id);
+                  emp.setFirstName(firstName);
+                  emp.setLastName(lastName);
+                  em.persist(emp);
+                  et.commit();
+              } catch (Exception ex) {
+                  if (et != null) {
+                      et.rollback();
+                  }
+                  ex.printStackTrace();
+              } finally {
+                  em.close();
+              }
+          }
+      
+          public static void getEmployee(int id) {
+              EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+              String query = "SELECT e FROM employee e WHERE e.employeeId = :empId";
+              TypedQuery<Employee> tq = em.createQuery(query, Employee.class);
+              tq.setParameter("empId", id);
+              Employee emp = null;
+              try {
+                  emp = tq.getSingleResult();
+                  System.out.println(emp.getFirstName() + " " + emp.getLastName());
+              } catch (NoResultException exception) {
+                  exception.printStackTrace();
+              } finally {
+                  em.close();
+              }
+          }
+      
+          public static void getEmployees() {
+              EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+              String query = "SELECT e FROM employee e WHERE e.employeeId IS NOT NULL";
+              TypedQuery<Employee> tq = em.createQuery(query, Employee.class);
+              List<Employee> emps;
+              try {
+                  emps = tq.getResultList();
+                  for (Employee e : emps) {
+                      System.out.println(e.getFirstName() + " " + e.getLastName());
+                  }
+              } catch (NoResultException exception) {
+                  exception.printStackTrace();
+              } finally {
+                  em.close();
+              }
+          }
+      
+          public static void updateFirstNameOfEmployee(int id, String firstName) {
+              EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+              EntityTransaction et = null;
+              Employee emp = null;
+              try {
+                  et = em.getTransaction();
+                  et.begin();
+                  emp = em.find(Employee.class, id);
+                  emp.setFirstName(firstName);
+                  em.persist(emp);
+                  et.commit();
+              } catch (Exception ex) {
+                  if (et != null) {
+                      et.rollback();
+                  }
+                  ex.printStackTrace();
+              } finally {
+                  em.close();
+              }
+          }
+      
+          public static void deleteEmployee(int id) {
+              EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
+              EntityTransaction et = null;
+              Employee emp = null;
+              try {
+                  et = em.getTransaction();
+                  et.begin();
+                  emp = em.find(Employee.class, id);
+                  em.remove(emp);
+                  et.commit();
+              } catch (Exception ex) {
+                  if (et != null) {
+                      et.rollback();
+                  }
+                  ex.printStackTrace();
+              } finally {
+                  em.close();
+              }
+          }
+      
+      
+      
+          public static void main(String[] args) {
+          // write your code here
+      
+              // Testing Hibernate
+      
+               // Adding data
+               addEmployee(1, "Osama", "Khan");
+               addEmployee(2, "Aamir", "Hanif");
+               addEmployee(3, "Hadi", "Rehman");
+      
+              // Getting single employee by Id
+              getEmployee(1);
+              getEmployee(2);
+              getEmployee(3);
+      
+              // Getting all employees
+              getEmployees();
+      
+              // Updating
+               updateFirstNameOfEmployee(3, "Tariq");
+      
+              // Deletion
+              deleteEmployee(3);
+      
+              ENTITY_MANAGER_FACTORY.close();
+          }
+      
+      }
+
 
 
 </details>
