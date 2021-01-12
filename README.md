@@ -55,7 +55,7 @@
 
 ### 2. Setup Classes
 
-* Create a new XML file called `persistence.xml` inside the `main/resources` folder.
+* Create a new XML file called `persistence.xml` inside the `main/resources/META-INF` folder.
 * Add the following contents in the `persistence.xml` file:
 
       <?xml version="1.0" encoding="UTF-8" ?>
@@ -89,7 +89,6 @@
   
 
 * Now add a class, which will be served as an entity in relation with the database.
-* An example repository class with main function is shown below:
 
       import javax.persistence.*;
       import java.io.Serializable;
@@ -122,6 +121,7 @@
       }
 
 * Now add a repository class to perform CRUD operations on the entity:
+* An example repository class with main function is shown below:
 
       import javax.persistence.*;
       import java.util.*;
