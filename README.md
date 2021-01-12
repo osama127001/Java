@@ -12,6 +12,51 @@
 # Java Documentation
 
 <details>
+<summary>Hibernate</summary>
+
+### 1. Setup MySQL
+
+* Install MySQL.
+* Open CMD in the `C:\Program Files\MySQL\MySQL Server 8.0\bin` path, and enter the following command:
+
+      mysql -u root -p
+
+* It will ask for a password, enter the password and now we have access to MySQL.
+* Now create a user to access the database using the following command.
+
+      CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'password';
+
+* Once the user is created, you can check if the user exists by using the following command:
+
+      SELECT user FROM mysql.user;
+
+* Now create a database using the following query:
+  
+      CREATE DATABASE testdb;
+  
+* Create a table using the following query. Make sure to select the database using `use databaseName` command to select the database for table creation.
+  
+      CREATE TABLE Employee (
+        firstName VARCHAR(30) NOT NULL, 
+        lastName VARCHAR(30) NOT NULL, 
+        employeeId INT UNSIGNED NOT NULL PRIMARY KEY
+      );
+
+  The `show tables` command will show all tables in the database, and `describe tablename` command will show details of the table.
+
+
+* Now we have to give privileges to the user that we just created in order to access the database. use the query below to assign privileges.
+
+       GRANT ALL PRIVILEGES ON testdb.employee TO 'dbadmin'@'localhost' WITH GRANT OPTION;
+
+* To check the privileges of a user, use the following query:
+
+      SHOW GRANTS FOR 'dbadmin'@'localhost';
+
+
+</details>
+
+<details>
 <summary>Data Conversion / Typecasting</summary>
 
 ## Data Conversion / Typecasting
