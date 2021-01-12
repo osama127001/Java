@@ -12,6 +12,53 @@
 # Java Documentation
 
 <details>
+<summary>Data Conversion / Typecasting</summary>
+
+## Data Conversion / Typecasting
+
+* ### Implicit Casting
+  
+Implicit casting means automatic conversion of one data type to another. see the example below:
+
+    short x = 2;
+    int y = x + 2;
+
+According to the above example, we can simply fit `short(2 bytes)` inside an `int(4 bytes)` without any error and conversion.
+
+Hierarchy: `byte > short > int > long > float > double`
+
+`Note: ` There is no data loss in implicit casting.
+
+* ### Explicit Casting
+
+Consider the example below:
+
+    double x = 1.1;
+    int y = x + 2; // error
+    int y = (int)x + 2; // explicit.
+
+In the above example, we are trying to fit `double(8 bytes)` in an `int(4 bytes)`, which does not make any sense, and we are also getting an error. 
+
+We can force the conversion by using explicit typecasting. In this way, we are taking the most significant 4 bytes 
+of a double and fitting it in an integer, and the remaining 4 bytes of double are lost.
+
+`Note: ` There is data loss in explicit casting.
+
+
+</details>
+
+
+<details>
+<summary>Math Class</summary>
+
+## Math Class
+
+* Use the following link for [Math](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html) class documentation.
+
+</details>
+
+
+<details>
 <summary>Get Class Type</summary>
 
 ### Get Class Type
@@ -41,7 +88,7 @@
 
 ### Open Closed Principle
 Open closed principle states that, a class is `open for extention` and `Closed for modification`.
-The example below shows a convert class with a `convertToXML()` method. lets say we have to add a much better method called `convertTOJSON()`. So we can add another function in the same class which is against the open closed principle as we are modifying the class. The class could be an alrady tested class and we may add a bug by modifying it. so we can extend it and add another class that holds `convertToJSON()` function.
+The example below shows a convert class with a `convertToXML()` method. let's say we have to add a much better method called `convertTOJSON()`. So we can add another function in the same class which is against the open closed principle as we are modifying the class. The class could be an alrady tested class and we may add a bug by modifying it. so we can extend it and add another class that holds `convertToJSON()` function.
 
     public class Convert {
     
@@ -633,3 +680,6 @@ For reading complete lines
 
 
 </details>
+
+
+
