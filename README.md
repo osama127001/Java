@@ -14,7 +14,75 @@
 For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
 
 <details>
+<summary>Date and Time Formatting</summary>
+
+### Date and Time Formatting
+  
+* Symbol Representation.
+
+  M = `month`, m = `minute`, y = `year`, d = `day`, s = `second`, h = `hour`
+
+
+* Date and time classes and their instantiations are shown below:
+
+      // Local date class
+      LocalDate ld = LocalDate.now(); // get current date
+      LocalDate ld2 = LocalDate.of(2021, Month.JANUARY, 13); // using month as an enum
+      LocalDate ld3 = LocalDate.of(2021, 1, 13);
+      System.out.println(ld2);
+  
+      // Local Time class
+      LocalTime lt = LocalTime.now();
+      LocalTime lt2 = LocalTime.of(9, 6, 3);
+      System.out.println(lt);
+  
+      // Local date time class
+      LocalDateTime ldt = LocalDateTime.now();
+      System.out.println(ldt.toString());
+  
+      // Instant, quite similar to local date time, but with zone
+      Instant i = Instant.now();
+      ZonedDateTime zdt = i.atZone(ZoneId.of("Asia/Kolkata"));
+      System.out.println(zdt);
+  
+      // creates a locale.
+      Locale l = new Locale("en", "pk");
+      System.out.println("locale language: " + l.getDisplayLanguage());
+      System.out.println("locale Country: " + l.getDisplayCountry());
+
+* A function that takes a date and locale, returns date in the required format:
+
+      public static String getFormattedDate(LocalDate date, Locale locale) throws DateTimeException, NoLocaleFoundException, ParseException {
+          DateFormat currentFormat = new SimpleDateFormat("yyyy-MM-dd");
+          if (locale.getCountry().equals("UK")) {
+              DateFormat targetDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+               return targetDateFormat.format(currentFormat.parse(date.toString()));
+          } else if (locale.getCountry().equals("US")) {
+              DateFormat targetDateFormat = new SimpleDateFormat("MM-dd-yyyy");
+              return targetDateFormat.format(currentFormat.parse(date.toString()));
+          } else {
+              throw new NoLocaleFoundException("The Given locale is not available.");
+          }
+      }
+
+      // Calling the above function in main class.
+      try {
+          System.out.println("US DateFormat: " + getFormattedDate(LocalDate.now(), new Locale("en", "us")));
+          System.out.println("UK DateFormat: " + getFormattedDate(LocalDate.now(), new Locale("en", "uk")));
+      } catch (Exception ex) {
+          System.out.println("Exception occurred: " + ex.getMessage());
+      }
+
+
+
+
+</details>
+
+
+<details>
 <summary>Exceptional Handling</summary>
+
+### Exceptional Handling
 
 * Exceptions are handled by simply adding try-catch-finally block on the code in which the exception
 can occur:

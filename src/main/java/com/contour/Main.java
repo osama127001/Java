@@ -1,13 +1,30 @@
 package com.contour;
 
-import com.contour.hibernate.Employee;
 import com.contour.repositorytask.DAL.Repositories.EmployeeRepository;
 
-import javax.persistence.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.*;
 import java.util.*;
 
 
 public class Main {
+
+    // M = month, m = minute, y = year, d = day, s = second, h = hour
+    public static String getFormattedDate(LocalDate date, Locale locale) throws DateTimeException,
+            NoLocaleFoundException, ParseException {
+        DateFormat currentFormat = new SimpleDateFormat("yyyy-MM-dd");
+        if (locale.getCountry().equals("UK")) {
+            DateFormat targetDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            return targetDateFormat.format(currentFormat.parse(date.toString()));
+        } else if (locale.getCountry().equals("US")) {
+            DateFormat targetDateFormat = new SimpleDateFormat("MM-dd-yyyy");
+            return targetDateFormat.format(currentFormat.parse(date.toString()));
+        } else {
+            throw new NoLocaleFoundException("The Given locale is not available.");
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -48,6 +65,16 @@ public class Main {
             System.out.println("Search result: " + res.getFirstName() + " " + res.getLastName());
         } catch (Exception ex) {
             System.out.println("An exception occurred: " + ex.getMessage());
+        }
+
+
+        try {
+            System.out.println("US DateFormat: " + getFormattedDate(LocalDate.now(),
+                    new Locale("en", "us")));
+            System.out.println("UK DateFormat: " + getFormattedDate(LocalDate.now(),
+                    new Locale("en", "uk")));
+        } catch (Exception ex) {
+            System.out.println("Exception occurred: " + ex.getMessage());
         }
 
     }
