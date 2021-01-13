@@ -8,7 +8,7 @@ import java.util.Collection;
 public class EmployeeRepository extends Repository<Employee> {
 
     @Override
-    public Employee find(String value) throws NullFieldException {
+    public Employee retrieve(String value) throws NullFieldException {
         String keyWord = value.toLowerCase();
         Collection<Employee> list = super.retrieve();
         for (Employee emp : list) {

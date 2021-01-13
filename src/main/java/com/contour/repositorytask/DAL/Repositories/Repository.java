@@ -1,5 +1,6 @@
 package com.contour.repositorytask.DAL.Repositories;
 
+import com.contour.repositorytask.DAL.Exceptions.NullFieldException;
 import com.contour.repositorytask.DAL.Interfaces.IRepository;
 
 import java.util.Collection;

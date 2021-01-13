@@ -14,9 +14,9 @@
 For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
 
 <details>
-<summary>Date and Time Formatting</summary>
+<summary>Date, Time and Number Formatting</summary>
 
-### Date and Time Formatting
+### Date, Time and Number Formatting
   
 * Symbol Representation.
 
@@ -69,6 +69,25 @@ For more information, use [Oracle's Documentation](https://docs.oracle.com/javas
       try {
           System.out.println("US DateFormat: " + getFormattedDate(LocalDate.now(), new Locale("en", "us")));
           System.out.println("UK DateFormat: " + getFormattedDate(LocalDate.now(), new Locale("en", "uk")));
+      } catch (Exception ex) {
+          System.out.println("Exception occurred: " + ex.getMessage());
+      }
+
+* A function that takes a number and rounds off the number upto given decimal places:
+
+      public static float getFormattedNumber(double number, int decimalPlaces)
+        throws NumberFormatException {
+          String multiplierAndDivisorString = "1";
+          for (int i = 0; i < decimalPlaces; i++) {
+              multiplierAndDivisorString = multiplierAndDivisorString.concat("0");
+          }
+          float multiplierAndDivisor = Float.parseFloat(multiplierAndDivisorString);
+          return Math.round(number * multiplierAndDivisor) / multiplierAndDivisor;
+      }
+
+      // calling the above funtion in main 
+      try {
+          System.out.println("Formatted Number: " + getFormattedNumber(24.45546, 1));
       } catch (Exception ex) {
           System.out.println("Exception occurred: " + ex.getMessage());
       }

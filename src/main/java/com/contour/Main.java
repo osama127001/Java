@@ -26,6 +26,16 @@ public class Main {
         }
     }
 
+    public static float getFormattedNumber(double number, int decimalPlaces)
+            throws NumberFormatException {
+        String multiplierAndDivisorString = "1";
+        for (int i = 0; i < decimalPlaces; i++) {
+            multiplierAndDivisorString = multiplierAndDivisorString.concat("0");
+        }
+        float multiplierAndDivisor = Float.parseFloat(multiplierAndDivisorString);
+        return Math.round(number * multiplierAndDivisor) / multiplierAndDivisor;
+    }
+
 
     public static void main(String[] args) {
 	// write your code here
@@ -56,23 +66,30 @@ public class Main {
         // getting names of all employees
         Collection<com.contour.repositorytask.BL.Employee> namesArr = repo.retrieve();
         for (com.contour.repositorytask.BL.Employee e : namesArr) {
-            System.out.println(e.getFirstName() + " " + e.getLastName());
+            System.out.println("Search result: " + e.getFirstName() + " " + e.getLastName());
         }
 
         // Searching Employee by name
         try {
-            com.contour.repositorytask.BL.Employee res = repo.find("Hadi");
+            com.contour.repositorytask.BL.Employee res = repo.retrieve("hadi");
             System.out.println("Search result: " + res.getFirstName() + " " + res.getLastName());
         } catch (Exception ex) {
             System.out.println("An exception occurred: " + ex.getMessage());
         }
 
-
+        // Calling Formatted date function
         try {
             System.out.println("US DateFormat: " + getFormattedDate(LocalDate.now(),
                     new Locale("en", "us")));
             System.out.println("UK DateFormat: " + getFormattedDate(LocalDate.now(),
                     new Locale("en", "uk")));
+        } catch (Exception ex) {
+            System.out.println("Exception occurred: " + ex.getMessage());
+        }
+
+        // Calling Formatted number function
+        try {
+            System.out.println("Formatted Number: " + getFormattedNumber(24.45546, 8));
         } catch (Exception ex) {
             System.out.println("Exception occurred: " + ex.getMessage());
         }
