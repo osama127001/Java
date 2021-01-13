@@ -1,6 +1,7 @@
 package com.contour;
 
-public class YCannotBeZero extends Throwable {
-    public YCannotBeZero(String s) {
+public class YCannotBeZero extends Exception {
+    public YCannotBeZero(String message) {
+        super(message);
     }
 }

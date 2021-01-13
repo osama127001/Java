@@ -9,134 +9,47 @@ import java.util.*;
 
 public class Main {
 
-    // Creating Entity Manager
-    private static final EntityManagerFactory ENTITY_MANAGER_FACTORY = Persistence
-            .createEntityManagerFactory("JavaTraining");
-
-    // CRUD Operations
-    public static void addEmployee(int id, String firstName, String lastName) {
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction et = null;
-        try {
-            et = em.getTransaction();
-            et.begin();
-            Employee emp = new Employee();
-            emp.setEmployeeId(id);
-            emp.setFirstName(firstName);
-            emp.setLastName(lastName);
-            em.persist(emp);
-            et.commit();
-        } catch (Exception ex) {
-            if (et != null) {
-                et.rollback();
-            }
-            ex.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    public static void getEmployee(int id) {
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        String query = "SELECT e FROM employee e WHERE e.employeeId = :empId";
-        TypedQuery<Employee> tq = em.createQuery(query, Employee.class);
-        tq.setParameter("empId", id);
-        Employee emp = null;
-        try {
-            emp = tq.getSingleResult();
-            System.out.println(emp.getFirstName() + " " + emp.getLastName());
-        } catch (NoResultException exception) {
-            exception.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    public static void getEmployees() {
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        String query = "SELECT e FROM employee e WHERE e.employeeId IS NOT NULL";
-        TypedQuery<Employee> tq = em.createQuery(query, Employee.class);
-        List<Employee> emps;
-        try {
-            emps = tq.getResultList();
-            for (Employee e : emps) {
-                System.out.println(e.getFirstName() + " " + e.getLastName());
-            }
-        } catch (NoResultException exception) {
-            exception.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    public static void updateFirstNameOfEmployee(int id, String firstName) {
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction et = null;
-        Employee emp = null;
-        try {
-            et = em.getTransaction();
-            et.begin();
-            emp = em.find(Employee.class, id);
-            emp.setFirstName(firstName);
-            em.persist(emp);
-            et.commit();
-        } catch (Exception ex) {
-            if (et != null) {
-                et.rollback();
-            }
-            ex.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-    public static void deleteEmployee(int id) {
-        EntityManager em = ENTITY_MANAGER_FACTORY.createEntityManager();
-        EntityTransaction et = null;
-        Employee emp = null;
-        try {
-            et = em.getTransaction();
-            et.begin();
-            emp = em.find(Employee.class, id);
-            em.remove(emp);
-            et.commit();
-        } catch (Exception ex) {
-            if (et != null) {
-                et.rollback();
-            }
-            ex.printStackTrace();
-        } finally {
-            em.close();
-        }
-    }
-
-
 
     public static void main(String[] args) {
 	// write your code here
 
-        // Testing Hibernate
+        // Creating objects
+        com.contour.repositorytask.BL.Employee e1 = new com.contour.repositorytask.BL.Employee("Osama", "Khan");
+        e1.setPassword("123");
+        e1.setEmailId("osama.khan");
+        e1.setSalary(1000);
 
-         // Adding data
-         addEmployee(1, "Osama", "Khan");
-         addEmployee(2, "Aamir", "Hanif");
-         addEmployee(3, "Hadi", "Rehman");
+        com.contour.repositorytask.BL.Employee e2 = new com.contour.repositorytask.BL.Employee("hadi", null);
+        e2.setPassword("123");
+        e2.setEmailId("hadi.khan");
+        e2.setSalary(1000);
 
-        // Getting single employee by Id
-        getEmployee(1);
-        getEmployee(2);
-        getEmployee(3);
+        com.contour.repositorytask.BL.Employee e3 = new com.contour.repositorytask.BL.Employee("aamir", "Khan");
+        e3.setPassword("123");
+        e3.setEmailId("aamir.khan");
+        e3.setSalary(1000);
 
-        // Getting all employees
-        getEmployees();
 
-        // Updating
-         updateFirstNameOfEmployee(3, "Tariq");
+        EmployeeRepository repo = new EmployeeRepository();
+        repo.create(e1);
+        repo.create(e2);
+        repo.create(e3);
+        // repo.delete(3);
 
-        // Deletion
-        deleteEmployee(3);
+        // getting names of all employees
+        Collection<com.contour.repositorytask.BL.Employee> namesArr = repo.retrieve();
+        for (com.contour.repositorytask.BL.Employee e : namesArr) {
+            System.out.println(e.getFirstName() + " " + e.getLastName());
+        }
 
-        ENTITY_MANAGER_FACTORY.close();
+        // Searching Employee by name
+        try {
+            com.contour.repositorytask.BL.Employee res = repo.find("Hadi");
+            System.out.println("Search result: " + res.getFirstName() + " " + res.getLastName());
+        } catch (Exception ex) {
+            System.out.println("An exception occurred: " + ex.getMessage());
+        }
+
     }
 
 }
@@ -157,35 +70,4 @@ public class Main {
 
 
 
-//    // Creating objects
-//    Employee e1 = new Employee("Osama", "Khan");
-//        e1.setPassword("123");
-//                e1.setEmailId("osama.khan");
-//                e1.setSalary(1000);
-//
-//                Employee e2 = new Employee("hadi", "Khan");
-//                e2.setPassword("123");
-//                e2.setEmailId("hadi.khan");
-//                e2.setSalary(1000);
-//
-//                Employee e3 = new Employee("aamir", "Khan");
-//                e3.setPassword("123");
-//                e3.setEmailId("aamir.khan");
-//                e3.setSalary(1000);
-//
-//
-//                EmployeeRepository repo = new EmployeeRepository();
-//                repo.create(e1);
-//                repo.create(e2);
-//                repo.create(e3);
-//                // repo.delete(3);
-//
-//                // getting names of all employees
-//                Collection<Employee> namesArr = repo.retrieve();
-//        for (Employee e : namesArr) {
-//        System.out.println(e.getFirstName() + " " + e.getLastName());
-//        }
-//
-//        // Searching Employee by name
-//        Employee res = repo.find("Hadi");
-//        System.out.println("Search result: " + res.getFirstName() + " " + res.getLastName());
+

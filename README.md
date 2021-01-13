@@ -1,4 +1,4 @@
-### IntelliJ Shortcuts
+# IntelliJ Shortcuts
 
 * `double tap shift`: Search anything in project. 
 * `ctrl + shift + enter`: Complete current statement.
@@ -10,6 +10,69 @@
 
 
 # Java Documentation
+
+For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
+
+<details>
+<summary>Exceptional Handling</summary>
+
+* Exceptions are handled by simply adding try-catch-finally block on the code in which the exception
+can occur:
+
+      try {
+          int[] x = {1, 2};
+          System.out.println(x[4]);
+      } catch (ArrayIndexOutOfBoundsException ar_ex) {
+          System.out.println("Index of array is out of bounds: " + ar_ex);
+      } catch (Exception ex) {
+          System.out.println("There is an Exception: " + ex);
+      } finally {
+          System.out.println("Close Connection");
+      }
+
+* `Note:` "Finally" always gets executed, even is exception is caught or not.
+* We can catch specific exceptions by using their name in the catch block or just handle any exception by using Exception in the catch block.
+* We can through an exception on runtime to handle it:
+
+      try {
+          int x = 0;
+          int y = 10 / x;
+  
+          if (x == 0) {
+              throw new Exception();
+          }
+      } catch (Exception ex) {
+          System.out.println("Exception occurred: " + ex.getMessage());
+      }
+
+* We can also create our own custom exceptions.
+
+      public class YCannotBeZero extends Exception {
+          public YCannotBeZero(String message) {
+              super(message);
+          }
+      }
+  
+* Now we can throw this exception. 
+  
+      try {
+          float x = 20;
+          float y = 10 - x;
+
+          if (y < 0) {
+              throw new YCannotBeZero("Y cannot be less than 0");
+          }
+      } catch (YCannotBeZero | AnyOtherException ex) {
+          System.out.println("Exception occurred: " + ex.getMessage());
+      }
+
+* We can also specify or mark functions if they can through some exceptions
+
+      public void main getData(int id) throws IOException, IndexOutOfBoundsException {
+          // Code
+      }
+
+</details>
 
 <details>
 <summary>Hibernate</summary>
@@ -297,6 +360,19 @@ of a double and fitting it in an integer, and the remaining 4 bytes of double ar
 
 `Note: ` There is data loss in explicit casting.
 
+* ### Conversion of Strings
+
+Converting any primitive type into an integer :
+
+      int no = 12;
+      String.valueOf(no); // Good
+      Integer.toString(no); // Good
+      "" + no; // not a good practice
+
+Converting String to any primitive type. Use `PremitiveDatatypeName.parseDTName(strValue)`:
+
+      String myString = "1234";
+      int foo = Integer.parseInt(myString);
 
 </details>
 
