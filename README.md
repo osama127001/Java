@@ -13,14 +13,61 @@
 
 For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
 
+
+<details>
+<summary>Streams in Java</summary>
+
+  Streams
+  Searching
+  grouping
+
+</details>
+
+
 <details>
 <summary>Date, Time and Number Formatting</summary>
 
-### Date, Time and Number Formatting
+### Date, Time, Currency and Number Formatting
   
 * Symbol Representation.
 
-  M = `month`, m = `minute`, y = `year`, d = `day`, s = `second`, h = `hour`
+  M = `month`, m = `minute`, y = `year`, d = `day`, s = `second`, h = `hour`, E = `dayName`
+
+
+* Creating a new Locale
+
+      // Create a default locale
+      Locale usLocale = Locale.US; // prints: en_US
+      
+      // Create a Locale if not available by default
+      Locale myLocale = new Locale("en", "IN"); // prints: en_IN
+
+* Print a date using a locale
+
+      DateFormat df_US = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.US);
+      System.out.println(df_US.format(new Date())); // prints: Jan 14, 2021
+
+      DateFormat df_UK = DateFormat.getDateInstance(DateFormat.DEFAULT, Locale.UK);
+      System.out.println(df_UK.format(new Date())); // prints: 14 Jan 2021
+
+
+* Printing Currencies with locale
+
+      NumberFormat x = NumberFormat.getCurrencyInstance(Locale.US);
+      Locale indiaLocale = new Locale("en", "IN");
+      Locale pakLocale = new Locale("en", "PK");
+
+      NumberFormat us     = NumberFormat.getCurrencyInstance(Locale.US);
+      NumberFormat india  = NumberFormat.getCurrencyInstance(indiaLocale);
+      NumberFormat china  = NumberFormat.getCurrencyInstance(Locale.CHINA);
+      NumberFormat france = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+      NumberFormat pak = NumberFormat.getCurrencyInstance(pakLocale);
+      
+      System.out.println("US: "     + us.format(12000));
+      System.out.println("India: "  + india.format(12000));
+      System.out.println("China: "  + china.format(12000));
+      System.out.println("France: " + france.format(12000));
+      System.out.println("Pakistan: " + pak.format(12000));
 
 
 * Date and time classes and their instantiations are shown below:
@@ -75,16 +122,14 @@ For more information, use [Oracle's Documentation](https://docs.oracle.com/javas
 
 * A function that takes a number and rounds off the number upto given decimal places:
 
-      public static float getFormattedNumber(double number, int decimalPlaces)
+      // String buffer, Fix this.
+      public static double getFormattedNumber(double number, int decimalPlaces)
         throws NumberFormatException {
-          String multiplierAndDivisorString = "1";
-          for (int i = 0; i < decimalPlaces; i++) {
-              multiplierAndDivisorString = multiplierAndDivisorString.concat("0");
-          }
-          float multiplierAndDivisor = Float.parseFloat(multiplierAndDivisorString);
-          return Math.round(number * multiplierAndDivisor) / multiplierAndDivisor;
+          BigDecimal bigDecimal = new BigDecimal(Double.toString(number));
+          bigDecimal = bigDecimal.setScale(decimalPlaces, RoundingMode.HALF_UP);
+          return bigDecimal.doubleValue();
       }
-
+    
       // calling the above funtion in main 
       try {
           System.out.println("Formatted Number: " + getFormattedNumber(24.45546, 1));
