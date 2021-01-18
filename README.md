@@ -1,6 +1,7 @@
 # IntelliJ Shortcuts
 
 * `double tap shift`: Search anything in project. 
+* `ctrl + alt`: Refactor / Format Code.
 * `ctrl + shift + enter`: Complete current statement.
 * `ctrl + /`: Comment line.
 * `ctrl + shift + /`: Comment block.
