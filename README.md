@@ -1,4 +1,4 @@
-# IntelliJ Shortcuts
+# IntelliJ Shortcuts ⌨
 
 * `double tap shift`: Search anything in project. 
 * `ctrl + shift + enter`: Complete current statement.
@@ -7,10 +7,14 @@
 * `hold ctrl + click`: goto declaration/definition.
 * `alt + enter`: show intended actions for error fix.
 * `alt + insert`: Insert constructor/getters/setters in class.
+* `atrl + alt + o`: Remove all un used classes.
+* `ctrl + w`: Expand Selection.
+* `ctrl + alt + v`: declare the statement in a variable.
 
 
 
-# Java Documentation
+
+# Java Documentation ☕
 
 For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
 
