@@ -1,6 +1,7 @@
 # IntelliJ Shortcuts ⌨
 
 * `double tap shift`: Search anything in project. 
+* `ctrl + alt`: Refactor / Format Code.
 * `ctrl + shift + enter`: Complete current statement.
 * `ctrl + /`: Comment line.
 * `ctrl + shift + /`: Comment block.
@@ -17,6 +18,40 @@
 # Java Documentation ☕
 
 For more information, use [Oracle's Documentation](https://docs.oracle.com/javase/tutorial/index.html).
+
+
+<details>
+<summary>Topics</summary>
+
+</details>
+
+<details>
+<summary>String Buffer / String Builder</summary>
+
+* When using a String, if we try to update the value of an existing String, then instead of updating, it will create a 
+  new String. which is not efficient.
+* String Buffer and String builder classes are same in terms of implementation.
+* The only difference is that String Buffer is `thread safe`, which means they can be used while working with multiple
+  threads, which means that if one thread is accessing the String, the other thread has to wait.
+* String builder is `not thread safe`.
+
+      // Instantiation and appending
+      StringBuffer sbf = new StringBuffer("Osama");
+      sbf.append(" Khan");
+      System.out.println(sbf);
+      
+      // Replacing
+      sbf.replace(0, 5, "Taha");
+      System.out.println(sbf);
+      
+      // Deleting
+      sbf.delete(5, 10);
+      System.out.println(sbf);
+
+
+</details>
+
+
 
 
 <details>
